@@ -105,12 +105,32 @@ public class LinkedList {
 		}
 	}
 
-	public void print(LinkedList list) {
-		Node node = list.head;
+	public Node reverse() {
+		Node currentNode = head, prevNode = null, nextNode = null;
+		while (currentNode != null) {
+			nextNode = currentNode.next;
+			currentNode.next = prevNode;
+			prevNode = currentNode;
+			currentNode = nextNode;
+		}
+		return prevNode;
+	}
+
+	public void print() {
+		Node node = head;
 		System.out.print("\nLinkedList: ");
 		while (node != null) {
 			System.out.print(node.data + " ");
 			node = node.next;
 		}
 	}
+
+	public void print(Node node) {
+		System.out.print("\nLinkedList: ");
+		while (node != null) {
+			System.out.print(node.data + " ");
+			node = node.next;
+		}
+	}
+
 }

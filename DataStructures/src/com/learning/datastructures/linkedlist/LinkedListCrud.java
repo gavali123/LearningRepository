@@ -1,5 +1,7 @@
 package com.learning.datastructures.linkedlist;
 
+import com.learning.datastructures.linkedlist.LinkedList.Node;
+
 public class LinkedListCrud {
 
 	public static void main(String[] args) {
@@ -8,19 +10,23 @@ public class LinkedListCrud {
 		list.insert(list, 20);
 		list.insert(list, 30);
 		list.insert(list, 40);
-		list.print(list);
+		list.print();
 
 		list.insert(list, 200, 0);
-		list.print(list);
+		list.print();
 
 		System.out.println("\nAfter Delete");
 		list.delete(list, 30);
-		list.print(list);
-		
-		System.out.println("\nSize: "+ list.size());
-		
-		System.out.println("\nReverse List: ");
+		list.print();
+
+		System.out.println("\nSize: " + list.size());
+
+		System.out.println("\nPrinting Reverse List: ");
 		list.printreverse();
+
+		Node reverseList = list.reverse();
+		System.out.println("\nReverse List: ");
+		list.print(reverseList);
 
 		System.out.println("\nDoubly Linked List: ");
 		// Doubly Linked List
