@@ -2,6 +2,7 @@ package com.learning.datastructures.linkedlist;
 
 public class LinkedList {
 	Node head;
+	int size = 0;
 
 	static class Node {
 		int data;
@@ -11,6 +12,10 @@ public class LinkedList {
 			this.data = data;
 			this.next = null;
 		}
+	}
+
+	public int size() {
+		return size;
 	}
 
 	public boolean insert(LinkedList list, int data) {
@@ -24,9 +29,10 @@ public class LinkedList {
 			}
 			last.next = node;
 		}
+		size++;
 		return true;
 	}
-	
+
 	public boolean insert(LinkedList list, int data, int position) {
 		boolean value = false;
 		LinkedList.Node node = new LinkedList.Node(data);
@@ -37,7 +43,7 @@ public class LinkedList {
 			value = true;
 		} else {
 			int counter = 0;
-			while(currentNode != null && counter != position) {
+			while (currentNode != null && counter != position) {
 				counter++;
 				prevNode = currentNode;
 				currentNode = currentNode.next;
@@ -48,7 +54,26 @@ public class LinkedList {
 				value = true;
 			}
 		}
+		if (value) {
+			size++;
+		}
 		return value;
+	}
+
+	public int get(int index) {
+		Node currentNode = head;
+		int iterator = 0;
+		if (currentNode != null && index == 0) {
+			return currentNode.data;
+		} else {
+			while (currentNode != null && iterator++ != index) {
+				currentNode = currentNode.next;
+			}
+			if (currentNode != null) {
+				return currentNode.data;
+			}
+		}
+		return 0;
 	}
 
 	public boolean delete(LinkedList list, int key) {
@@ -67,7 +92,17 @@ public class LinkedList {
 				prevNode.next = currentNode.next;
 			}
 		}
+		if (value) {
+			size--;
+		}
 		return value;
+	}
+
+	public void printreverse() {
+		int count = size - 1;
+		while (count >= 0) {
+			System.out.print(get(count--) + " ");
+		}
 	}
 
 	public void print(LinkedList list) {
